@@ -241,21 +241,29 @@ Open your browser and navigate to the frontend URL
 1. **Sign Up**
    - Click "Sign Up" on the landing page
    - Enter username, email, and password
-   - Complete the 4-step registration form:
-     - Step 1: Business/Personal description
-     - Step 2: Bank account details
-     - Step 3: Personal information
-     - Step 4: Set 4-digit Fintop PIN
-    
   <img width="1919" height="968" alt="image" src="https://github.com/user-attachments/assets/e1fc562d-9823-44ac-b6ac-701b8c35cf19" />
+  
+   - Complete the 4-step registration form:
+     - Step 1: Description
+   <img width="1919" height="978" alt="image" src="https://github.com/user-attachments/assets/e2ce4704-1001-4ae4-919d-a23971fe1673" />
+   
+     - Step 2: Bank account details
+   <img width="1919" height="971" alt="image" src="https://github.com/user-attachments/assets/0ed6d0d2-9174-47e2-b74b-793cdd79dd83" />
+   
+     - Step 3: Personal information
+   <img width="1919" height="972" alt="image" src="https://github.com/user-attachments/assets/ac2b228c-15c4-4d77-9c9c-e7955a7904cf" />
+   
+     - Step 4: Set 4-digit Fintop PIN
+    <img width="1919" height="972" alt="image" src="https://github.com/user-attachments/assets/bd4cd03e-abf3-4198-9034-33bc667546d6" />
 
-  <img width="1919" height="978" alt="image" src="https://github.com/user-attachments/assets/e2ce4704-1001-4ae4-919d-a23971fe1673" />
 
-  <img width="1919" height="971" alt="image" src="https://github.com/user-attachments/assets/0ed6d0d2-9174-47e2-b74b-793cdd79dd83" />
+  
 
-  <img width="1919" height="972" alt="image" src="https://github.com/user-attachments/assets/ac2b228c-15c4-4d77-9c9c-e7955a7904cf" />
+  
 
-  <img width="1919" height="972" alt="image" src="https://github.com/user-attachments/assets/bd4cd03e-abf3-4198-9034-33bc667546d6" />
+  
+
+  
 
 
 2. **Sign In**
