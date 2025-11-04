@@ -16,21 +16,20 @@ FINTOP is a demonstration project that showcases the fundamental mechanics of a 
 ### User Management
 - User registration with multi-step form
 - Authentication with email and password
-- Profile editing capabilities
-- Unique Fintop ID generation (phone number + IFSC code)
+- Profile editing
+- Unique Fintop ID generation
 
 ### Payment Operations
 - Send money to other users via Fintop ID
 - Request money from contacts
 - PIN-based transaction verification
-- Real-time balance updates
+- Balance updates
 - Transaction success/failure handling
 
 ### Transaction History
 - View all past transactions
 - Filter by date, amount, or type
 - Detailed transaction receipts
-- Color-coded sent/received indicators
 
 ### Rewards System
 - Four-tier badge system (Bronze, Silver, Gold, Diamond)
