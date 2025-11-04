@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.multiform-body {
+    background-color: #c9d6ff;
+    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.multiform-container {
+    width: 400px;
+    height: 500px;
+    background: #fff;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.multiform-container h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #512da8;
+    transform: translateX(9%);
+}
+
+.multiform-form1 {
+    width: 280px;
+    position: absolute;
+    top: 120px;
+    left: 40px;
+    transition: 0.5s;
+}
+
+.multiform-form1 textarea {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 10px 0;
+    background-color: #eee;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    resize: none; 
+    font-size: 14px;
+    transform: translateX(9%);
+}
+
+.multiform-form2 {
+    width: 280px;
+    position: absolute;
+    top: 75px;
+    left: 40px;
+    transition: 0.5s;
+}
+
+.multiform-form3, .multiform-form4 {
+    width: 280px;
+    position: absolute;
+    top: 130px;
+    left: 40px;
+    transition: 0.5s;
+}
+
+.multiform-form2 input, .multiform-form3 input, .multiform-form4 input {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 10px 0;
+    background-color: #eee;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    transform: translateX(9%);
+}
+
+.multiform-input-group {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.multiform-select {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 10px 0;
+    position: relative;
+    left: 25px;
+    background-color: #eee;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+.multiform-btn-box {
+    width: 100%;
+    margin: 30px auto;
+    text-align: center;
+    transform: translateX(9%);
+}
+
+.multiform-form1 button, .multiform-form2 button, .multiform-form3 button, .multiform-form4 button {
+    width: 110px;
+    height: 35px;
+    margin: 0 10px;
+    background: #512da8;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.8em;
+}
+
+.multiform-form1 button:hover, .multiform-form2 button:hover, .multiform-form3 button:hover, .multiform-form4 button:hover {
+    background-color: #5c6bc0;
+}
+
+.multiform-step-row {
+    width: 400px;
+    height: 40px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 -1px 5px -1px #000;
+    position: relative;
+}
+
+.multiform-step-col {
+    width: 100px;
+    text-align: center;
+    color: #333;
+    position: relative;
+}
+
+#multiform-progress {
+    position: absolute;
+    height: 100%;
+    background: linear-gradient(to right, #1565c0, #1976d2);
+}
+
+.multiform-small {
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.8em;
+}
+
+#multiform-progress::after {
+    content: '';
+    height: 0;
+    width: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    position: absolute;
+    right: -20px;
+    top: 0;
+    border-left: 20px solid #1976d2;
+}
+
+.multiform-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.multiform-popup-content {
+    background-color: #fff;
+    padding: 20px 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+}
+
+.multiform-popup p {
+    color: #512da8;
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.multiform-popup button {
+    background-color: #512da8;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.multiform-popup button:hover {
+    background-color: #5c6bc0;
+}
+
+.multiform-animation-popup-overlay { 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .multiform-animation-popup-content { 
+    background-color: #1f2233;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 300px; 
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

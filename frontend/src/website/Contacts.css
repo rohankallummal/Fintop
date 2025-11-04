@@ -1,0 +1,248 @@
+.contacts-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background-color: #14161e;
+  padding: 20px;
+  gap: 40px;
+  overflow-x: hidden;
+}
+
+.contacts-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  color: #fff;
+  max-width: 600px;
+  position: relative;
+  top: 80px;
+  left: 150px;
+}
+
+.contacts-animations {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 300px;
+  overflow: hidden;
+  position: relative;
+  top: 200px;
+  left: 300px;
+}
+
+.contacts-text {
+  color: #fff;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contacts-table {
+  width: 150%;
+  margin-top: 20px;
+  color: #f0f0f0;
+  background-color: #1e1f28;
+  border-radius: 12px;
+  overflow: visible;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.contacts-table thead {
+  background-color: #292b36;
+}
+
+.contacts-table th {
+  padding: 15px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #fff;
+  text-align: left;
+}
+
+.contacts-table th:nth-child(1),
+.contacts-table td:nth-child(1) {
+  width: 100px;
+}
+
+.contacts-table th:nth-child(2),
+.contacts-table td:nth-child(2) {
+  width: 150px; 
+}
+
+.contacts-table th:nth-child(3),
+.contacts-table td:nth-child(3) {
+  width: 200px; 
+}
+
+.contacts-table th:nth-child(4),
+.contacts-table td:nth-child(4) {
+  width: 50px;
+}
+
+.contacts-table th:nth-child(5),
+.contacts-table td:nth-child(5) {
+  width: 80px;
+}
+
+.contacts-table tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.contacts-table tbody tr:hover {
+  background-color: #333542;
+}
+
+.contacts-table td {
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 0.95rem;
+  color: #fff;
+  border-bottom: 1px solid #3a3c48;
+}
+
+.contacts-table td input[type="number"] {
+  background-color: #292b36;
+  color: #d1d2d6;
+  border: 1px solid #3a3c48;
+  border-radius: 6px;
+  padding: 5px;
+  width: 90%;
+  outline: none;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-controls button {
+  background: none;
+  border: none;
+  color: #a0a3b1;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: color 0.2s;
+}
+
+.pagination-controls button:hover {
+  color: #ffffff;
+}
+
+.pagination-controls button:disabled {
+  color: #555;
+  cursor: not-allowed;
+}
+
+.pagination-controls span {
+  margin: 0 15px;
+  color: #a0a3b1;
+  font-size: 1.2rem;
+}
+
+.search-filter-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 600px;
+  justify-content: center;
+  position: relative;
+}
+
+.search-input-container {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  align-items: center;
+  background-color: #1e1f28;
+  border-radius: 6px;
+  border: 1px solid #3a3c48;
+  padding: 5px 10px;
+}
+
+.search-input-container ion-icon {
+  color: #a0a3b1;
+  font-size: 1rem;
+  margin-right: 8px;
+  pointer-events: none;
+}
+
+.search-input {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+  font-size: 0.9rem;
+  color: #f0f0f0;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #a0a3b1;
+  opacity: 0.8;
+}
+
+.filter-input-container {
+  display: flex;
+  align-items: center;
+  background-color: #1e1f28;
+  border-radius: 8px;
+  border: 1px solid #3a3c48;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.filter-input-container:hover {
+  background-color: #292b36;
+  border-color: #555;
+}
+
+.filter-input-container ion-icon.filter-icon {
+  color: #a0a3b1;
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+.filter-button {
+  background: none;
+  border: none;
+  color: #f0f0f0;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 365px;
+  background-color: #1e1f28;
+  border: 1px solid #3a3c48;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  width: 160px;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.dropdown-menu div {
+  padding: 10px 15px;
+  color: #f0f0f0;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+}
+
+.dropdown-menu div:hover {
+  background-color: #292b36;
+}
