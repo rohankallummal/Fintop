@@ -75,32 +75,32 @@ FINTOP is a demonstration project that showcases the fundamental mechanics of a 
 1. **Sign Up**
    - Click "Sign Up" on the landing page
    - Enter username, email, and password
-  <img width="1919" height="968" alt="image" src="https://github.com/user-attachments/assets/e1fc562d-9823-44ac-b6ac-701b8c35cf19" />
-  
----
+   
+   <img width="1919" alt="Sign Up Page" src="https://github.com/user-attachments/assets/e1fc562d-9823-44ac-b6ac-701b8c35cf19" />
 
    - Complete the 4-step registration form:
-     - Step 1: Description
-   <img width="1919" height="978" alt="image" src="https://github.com/user-attachments/assets/e2ce4704-1001-4ae4-919d-a23971fe1673" />
    
-     - Step 2: Bank account details
-   <img width="1919" height="971" alt="image" src="https://github.com/user-attachments/assets/0ed6d0d2-9174-47e2-b74b-793cdd79dd83" />
+     **Step 1: Description**
+     
+     <img width="1919" alt="Step 1 - Description" src="https://github.com/user-attachments/assets/e2ce4704-1001-4ae4-919d-a23971fe1673" />
    
-     - Step 3: Personal information
-   <img width="1919" height="972" alt="image" src="https://github.com/user-attachments/assets/ac2b228c-15c4-4d77-9c9c-e7955a7904cf" />
+     **Step 2: Bank account details**
+     
+     <img width="1919" alt="Step 2 - Bank Details" src="https://github.com/user-attachments/assets/0ed6d0d2-9174-47e2-b74b-793cdd79dd83" />
    
-     - Step 4: Set 4-digit Fintop PIN
-    <img width="1919" height="972" alt="image" src="https://github.com/user-attachments/assets/bd4cd03e-abf3-4198-9034-33bc667546d6" />
+     **Step 3: Personal information**
+     
+     <img width="1919" alt="Step 3 - Personal Info" src="https://github.com/user-attachments/assets/ac2b228c-15c4-4d77-9c9c-e7955a7904cf" />
+   
+     **Step 4: Set 4-digit Fintop PIN**
+     
+     <img width="1919" alt="Step 4 - Fintop PIN" src="https://github.com/user-attachments/assets/bd4cd03e-abf3-4198-9034-33bc667546d6" />
 
----
-  
-1. **Sign In**
+2. **Sign In**
    - Enter your registered email and password
    - You'll be redirected to the home dashboard
 
-  <img width="1919" height="971" alt="image" src="https://github.com/user-attachments/assets/c360a4d9-9867-4f22-aeb1-7e87c5469378" />
-
----
+   <img width="1919" alt="Sign In Page" src="https://github.com/user-attachments/assets/c360a4d9-9867-4f22-aeb1-7e87c5469378" />
 
 ### Using the Application
 
@@ -110,9 +110,7 @@ FINTOP is a demonstration project that showcases the fundamental mechanics of a 
 - Edit your profile information
 - Copy Fintop ID or balance with one click
 
-<img width="1916" height="969" alt="image" src="https://github.com/user-attachments/assets/52f28315-65e6-4dbb-b5ab-f6f7c37c695f" />
-
----
+<img width="1916" alt="Home Dashboard" src="https://github.com/user-attachments/assets/52f28315-65e6-4dbb-b5ab-f6f7c37c695f" />
 
 #### Making Payments
 1. Navigate to "Payment" from the sidebar
@@ -122,8 +120,6 @@ FINTOP is a demonstration project that showcases the fundamental mechanics of a 
 5. Enter your 4-digit PIN
 6. Transaction will be processed
 
----
-
 #### Requesting Money
 1. Navigate to "Payment" from the sidebar
 2. Enter payer's Fintop ID
@@ -132,9 +128,7 @@ FINTOP is a demonstration project that showcases the fundamental mechanics of a 
 5. Enter your 4-digit PIN
 6. Request will be sent
 
-<img width="1919" height="972" alt="image" src="https://github.com/user-attachments/assets/a6d5d8e3-9829-4159-946b-bd7bdba0edaa" />
-
----
+<img width="1919" alt="Payment Page" src="https://github.com/user-attachments/assets/a6d5d8e3-9829-4159-946b-bd7bdba0edaa" />
 
 #### Managing Contacts
 - View all registered users
@@ -142,9 +136,7 @@ FINTOP is a demonstration project that showcases the fundamental mechanics of a 
 - Filter contacts (Ascending/Descending/Pending Payments)
 - Click on any contact to initiate payment
 
-<img width="1919" height="963" alt="image" src="https://github.com/user-attachments/assets/0420c282-6d2c-4e42-8937-e693bafbe32e" />
-
----
+<img width="1919" alt="Contacts Page" src="https://github.com/user-attachments/assets/0420c282-6d2c-4e42-8937-e693bafbe32e" />
 
 #### Transaction History
 - View all your transactions
@@ -152,10 +144,9 @@ FINTOP is a demonstration project that showcases the fundamental mechanics of a 
 - Click on any transaction for detailed receipt
 - See sent (red) vs received (green) transactions
 
-<img width="1919" height="971" alt="image" src="https://github.com/user-attachments/assets/87cb3973-7c88-449c-8f28-79d8ece4ee14" />
-<img width="426" height="622" alt="image" src="https://github.com/user-attachments/assets/11b69f7e-0b57-4847-8c7c-12b34d860414" />
+<img width="1919" alt="Transaction History" src="https://github.com/user-attachments/assets/87cb3973-7c88-449c-8f28-79d8ece4ee14" />
 
----
+<img width="426" alt="Transaction Details" src="https://github.com/user-attachments/assets/11b69f7e-0b57-4847-8c7c-12b34d860414" />
 
 #### Rewards
 - Track your spending progress
@@ -163,9 +154,7 @@ FINTOP is a demonstration project that showcases the fundamental mechanics of a 
 - Claim rewards when thresholds are met
 - Rewards are automatically credited to your account
 
-<img width="1919" height="970" alt="image" src="https://github.com/user-attachments/assets/dfe2cec3-5116-458f-b14a-cbe3905f9a5c" />
-
----
+<img width="1919" alt="Rewards Page" src="https://github.com/user-attachments/assets/dfe2cec3-5116-458f-b14a-cbe3905f9a5c" />
 
 ## Project Structure
 
@@ -262,7 +251,7 @@ cd ../frontend
 npm install
 ```
 
-## 🗄️ Database Setup
+## Database Setup
 
 ### 1. Start MySQL Server
 
@@ -331,10 +320,14 @@ The application will run on `http://localhost:5173` (or another port shown in te
 
 Open your browser and navigate to the frontend URL
 
+## License
 
+This project is open source and available for educational purposes.
 
+## Disclaimer
 
+This is a demonstration project for educational purposes only. It simulates a UPI payment system and should not be used for real financial transactions.
 
+---
 
-
-
+**Built with ❤️ to demonstrate database-driven payment systems**
