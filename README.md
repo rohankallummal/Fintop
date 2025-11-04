@@ -319,15 +319,3 @@ The application will run on `http://localhost:5173` (or another port shown in te
 ### 3. Access the Application
 
 Open your browser and navigate to the frontend URL
-
-## License
-
-This project is open source and available for educational purposes.
-
-## Disclaimer
-
-This is a demonstration project for educational purposes only. It simulates a UPI payment system and should not be used for real financial transactions.
-
----
-
-**Built with ❤️ to demonstrate database-driven payment systems**
