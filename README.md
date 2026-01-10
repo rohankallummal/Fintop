@@ -1,6 +1,6 @@
 # FINTOP 
 
-A full-stack web application that simulates a UPI payment system, demonstrating real-time money transfers between users through a MySQL database.
+web application that simulates a UPI payment system, demonstrating real-time money transfers between users through a MySQL database.
 
 ## Overview
 
