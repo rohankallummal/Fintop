@@ -39,8 +39,8 @@ const Contacts = () => {
         } else {
           console.error('Failed to fetch contact information');
         }
-      } catch (error) {
-        console.error('Error fetching contact information:', error);
+      } catch {
+        console.error('Failed to fetch contact information');
       }
     };
 
@@ -51,15 +51,15 @@ const Contacts = () => {
     fetch('/assets/animation3.json')
       .then((response) => response.json())
       .then((data) => setAnimationData1(data))
-      .catch((error) =>
-        console.error('Error loading first animation:', error)
+      .catch(() =>
+        console.error('Failed to load first animation')
       );
 
     fetch('/assets/animation4.json')
       .then((response) => response.json())
       .then((data) => setAnimationData2(data))
-      .catch((error) =>
-        console.error('Error loading second animation:', error)
+      .catch(() =>
+        console.error('Failed to load second animation')
       );
   }, []);
 

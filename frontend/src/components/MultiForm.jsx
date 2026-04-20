@@ -29,7 +29,7 @@ const MultiForm = ({ initialData, onFormSubmit }) => {
     fetch('/assets/success-animation.json')
       .then((response) => response.json())
       .then((data) => setSuccessAnimationData(data))
-      .catch((error) => console.error('Error loading success animation:', error));
+      .catch(() => console.error('Failed to load success animation'));
   }, []);
   
 

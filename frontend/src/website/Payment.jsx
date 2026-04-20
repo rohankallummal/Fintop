@@ -22,12 +22,12 @@ const Payment = () => {
     fetch('/assets/payment-animation.json')
       .then((response) => response.json())
       .then((data) => setPaymentAnimationData(data))
-      .catch((error) => console.error('Error loading payment animation:', error));
+      .catch(() => console.error('Failed to load payment animation'));
 
     fetch('/assets/request-animation.json')
       .then((response) => response.json())
       .then((data) => setRequestAnimationData(data))
-      .catch((error) => console.error('Error loading request animation:', error));
+      .catch(() => console.error('Failed to load request animation'));
     
     fetch('/assets/insufficientamount.json')
       .then((r) => r.json())

@@ -13,15 +13,36 @@ logs/
 
 # Environment files
 .env
+.env.*
+!.env.example
 .env.local
+backend/.env
+frontend/.env
+*.pem
+*.key
+credentials.json
+secrets.json
 
 # System files
 .DS_Store
 Thumbs.db
+ehthumbs.db
+Desktop.ini
 
-# VSCode config
+# Editor/IDE config
 .vscode/
+.idea/
+*.swp
+*.swo
+*~
 
 # Temporary files
 *.tmp
 *.cache
+
+# Coverage & test output
+coverage/
+.nyc_output/
+
+# Security scan artefacts
+security/

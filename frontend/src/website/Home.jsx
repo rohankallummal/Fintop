@@ -33,7 +33,7 @@ const Home = () => {
     fetch('/assets/animation1.json')
       .then((response) => response.json())
       .then((data) => setAnimationData(data))
-      .catch((error) => console.error('Error loading animation:', error));
+      .catch(() => console.error('Failed to load animation'));
   }, []);
 
   useEffect(() => {
@@ -64,8 +64,8 @@ const Home = () => {
         },
       });
       setQrDataUrl(dataUrl);
-    } catch (error) {
-      console.error('Error generating QR code:', error);
+    } catch {
+      console.error('Failed to generate QR code');
     }
   };
 
@@ -122,7 +122,7 @@ const handleEditOrSave = async () => {
       }));
       setPopupMessage('Profile updated successfully!');
     } catch (err) {
-      console.error(err);
+      console.error('Profile update failed');
       setPopupMessage(err.message || 'Failed to update profile.');
     }
     setShowPopup(true);

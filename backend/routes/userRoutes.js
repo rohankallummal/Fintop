@@ -1,4 +1,5 @@
 const express = require("express");
+const crypto = require("crypto");
 const router = express.Router();
 const db = require("../config/db");
 
@@ -27,12 +28,12 @@ router.post("/register", (req, res) => {
     [username, emailID, app_password, fintop_pin, description, phone_number, first_name],
     (userError, userResults) => {
       if (userError) {
-        console.error("Error inserting into users table:", userError);
-        return res.status(500).json({ message: "Failed to save user data", error: userError });
+        console.error("Failed to insert user record");
+        return res.status(500).json({ message: "Failed to save user data" });
       }
 
       const userId = userResults.insertId;
-      const randomAmount = Math.floor(Math.random() * (60000 - 55000 + 1)) + 55000;
+      const randomAmount = crypto.randomInt(55000, 60001);
 
       const bankQuery = `
         INSERT INTO BankAccount (UserID, BankName, AccountNumber, IFSC_Code, AccountType, Amount)
@@ -44,11 +45,11 @@ router.post("/register", (req, res) => {
         [userId, BankName, AccountNumber, IFSC_Code, AccountType, randomAmount],
         (bankError) => {
           if (bankError) {
-            console.error("Error inserting into BankAccount table:", bankError);
+            console.error("Failed to insert bank account record");
             db.query("DELETE FROM users WHERE user_id = ?", [userId], (rollbackError) => {
-              if (rollbackError) console.error("Rollback failed:", rollbackError);
+              if (rollbackError) console.error("Rollback failed");
             });
-            return res.status(500).json({ message: "Failed to save bank account data", error: bankError });
+            return res.status(500).json({ message: "Failed to save bank account data" });
           }
           res.status(201).json({ message: "User and bank account created successfully" });
         }
@@ -61,13 +62,13 @@ router.post("/authenticate", (req, res) => {
   const { emailID, app_password } = req.body;
 
   const query = `
-    SELECT * FROM users 
+    SELECT * FROM users
     WHERE emailID = ? AND app_password = ?;
   `;
 
   db.query(query, [emailID, app_password], (error, results) => {
     if (error) {
-      console.error("Error during authentication:", error);
+      console.error("Authentication query failed");
       return res.status(500).json({ message: "Server error" });
     }
 
@@ -83,7 +84,7 @@ router.post("/authenticate", (req, res) => {
     `;
     db.query(logQuery, [user.user_id], (logError) => {
       if (logError) {
-        console.error("Error inserting login log:", logError);
+        console.error("Login log insert failed");
         return res.status(500).json({ message: "Server error" });
       }
 
@@ -93,7 +94,7 @@ router.post("/authenticate", (req, res) => {
       `;
       db.query(bankQuery, [user.user_id], (bankError, bankResults) => {
         if (bankError) {
-          console.error("Error fetching bank account details:", bankError);
+          console.error("Bank account lookup failed");
           return res.status(500).json({ message: "Server error" });
         }
         const bankAccount = bankResults[0] || null;
@@ -104,16 +105,16 @@ router.post("/authenticate", (req, res) => {
         `;
         db.query(fintopQuery, [user.user_id], (fintopError, fintopResults) => {
           if (fintopError) {
-            console.error("Error fetching fintop_id:", fintopError);
+            console.error("Fintop id lookup failed");
             return res.status(500).json({ message: "Server error" });
           }
           const fintopId = fintopResults.length > 0 ? fintopResults[0].fintop_id : null;
 
           const badgesQuery = `
-            SELECT 
-              b.badge_id, 
-              b.tier, 
-              b.title, 
+            SELECT
+              b.badge_id,
+              b.tier,
+              b.title,
               b.reward_amount,
               ub.awarded_at
             FROM user_badges ub
@@ -123,7 +124,7 @@ router.post("/authenticate", (req, res) => {
           `;
           db.query(badgesQuery, [user.user_id], (badgeErr, badgeResults) => {
             if (badgeErr) {
-              console.error("Error fetching user badges:", badgeErr);
+              console.error("User badge lookup failed");
               return res.status(500).json({ message: "Server error" });
             }
 
@@ -134,7 +135,7 @@ router.post("/authenticate", (req, res) => {
               ...user,
               BankAccount: bankAccount,
               fintop_id: fintopId,
-              badges: badgeResults  
+              badges: badgeResults
             });
           });
         });
@@ -185,7 +186,7 @@ router.post('/check-unique', (req, res) => {
 
     db.query(userQuery, userQueryParams, (userError, userResults) => {
       if (userError) {
-        console.error('Error checking unique fields in users table:', userError);
+        console.error('Unique field lookup failed');
         return res.status(500).json({ message: 'Server error' });
       }
 
@@ -213,7 +214,7 @@ router.post('/check-unique', (req, res) => {
     const bankQuery = 'SELECT AccountNumber FROM BankAccount WHERE AccountNumber = ?';
     db.query(bankQuery, [AccountNumber], (bankError, bankResults) => {
       if (bankError) {
-        console.error('Error checking AccountNumber:', bankError);
+        console.error('Account number lookup failed');
         return res.status(500).json({ message: 'Server error' });
       }
 
@@ -240,19 +241,19 @@ router.put('/update', (req, res) => {
     [username, first_name, emailID, description, user_id],
     (error, results) => {
       if (error) {
-        console.error('Error updating user data:', error);
+        console.error('User update failed');
         return res
           .status(500)
-          .json({ message: 'Failed to update user data', error });
+          .json({ message: 'Failed to update user data' });
       }
 
       const fetchQuery = `SELECT * FROM users WHERE user_id = ?;`;
       db.query(fetchQuery, [user_id], (fetchErr, userResults) => {
         if (fetchErr) {
-          console.error('Error fetching updated user data:', fetchErr);
+          console.error('Updated user lookup failed');
           return res
             .status(500)
-            .json({ message: 'Failed to fetch updated user data', error: fetchErr });
+            .json({ message: 'Failed to fetch updated user data' });
         }
         const user = userResults[0];
         delete user.app_password;
@@ -261,20 +262,20 @@ router.put('/update', (req, res) => {
         const bankQuery = `SELECT * FROM BankAccount WHERE UserID = ?;`;
         db.query(bankQuery, [user_id], (bankErr, bankResults) => {
           if (bankErr) {
-            console.error('Error fetching bank account details:', bankErr);
+            console.error('Bank account lookup failed');
             return res
               .status(500)
-              .json({ message: 'Server error', error: bankErr });
+              .json({ message: 'Server error' });
           }
           const bankAccount = bankResults[0] || null;
 
           const fintopQuery = `SELECT fintop_id FROM fintop WHERE user_id = ?;`;
           db.query(fintopQuery, [user_id], (fintopErr, fintopResults) => {
             if (fintopErr) {
-              console.error('Error fetching fintop_id:', fintopErr);
+              console.error('Fintop id lookup failed');
               return res
                 .status(500)
-                .json({ message: 'Server error', error: fintopErr });
+                .json({ message: 'Server error' });
             }
             const fintop_id = fintopResults.length
               ? fintopResults[0].fintop_id
@@ -314,9 +315,9 @@ function getLastLoginUser(callback) {
 
 router.post('/contactinfo', (req, res) => {
   const query = `
-    SELECT 
-      u.first_name, 
-      u.phone_number, 
+    SELECT
+      u.first_name,
+      u.phone_number,
       f.fintop_id,
       pr.status AS request_status,
       pr.amount AS request_amount
@@ -338,8 +339,8 @@ router.post('/contactinfo', (req, res) => {
 
   db.query(query, (error, results) => {
     if (error) {
-      console.error('Error retrieving contact information:', error);
-      return res.status(500).json({ message: 'Failed to retrieve contact information', error });
+      console.error('Contact info lookup failed');
+      return res.status(500).json({ message: 'Failed to retrieve contact information' });
     }
 
     res.status(200).json(results);
@@ -351,7 +352,7 @@ router.post("/pay", (req, res) => {
 
   getLastLoginUser((err, lastUser) => {
     if (err) {
-      console.error("Error fetching last login user:", err);
+      console.error("Last login lookup failed");
       return res.status(500).json({ message: "Error fetching user details" });
     }
 
@@ -368,7 +369,7 @@ router.post("/pay", (req, res) => {
     `;
     db.query(balanceQ, [fromFintopId], (balErr, balRows) => {
       if (balErr) {
-        console.error("Error fetching balance:", balErr);
+        console.error("Balance lookup failed");
         return res.status(500).json({ message: "Could not fetch balance" });
       }
       const balance = (balRows[0] && balRows[0].balance) || 0;
@@ -380,7 +381,7 @@ router.post("/pay", (req, res) => {
       `;
       db.query(insertQ, [fromFintopId, toFintopId, amount, status], (txErr, txRes) => {
         if (txErr) {
-          console.error("Error inserting transaction:", txErr);
+          console.error("Transaction insert failed");
           return res.status(500).json({ message: "Transaction failed" });
         }
 
@@ -392,14 +393,14 @@ router.post("/pay", (req, res) => {
         const fetchTsQ = `SELECT time_stamp FROM transactions WHERE transaction_id = ?`;
         db.query(fetchTsQ, [transactionId], (tsErr, tsRows) => {
           if (tsErr || !tsRows.length) {
-            console.error("Error fetching timestamp:", tsErr);
+            console.error("Transaction timestamp lookup failed");
             return res.status(500).json({ message: "Could not fetch transaction time" });
           }
           const txnTime = tsRows[0].time_stamp;
 
           db.query(balanceQ, [fromFintopId], (bal2Err, bal2Rows) => {
             if (bal2Err || !bal2Rows.length) {
-              console.error("Error fetching balance:", bal2Err);
+              console.error("Balance lookup failed");
               return res.status(500).json({ message: "Could not fetch balance" });
             }
             const newBalance = bal2Rows[0].balance;
@@ -414,7 +415,7 @@ router.post("/pay", (req, res) => {
             `;
             db.query(badgesQ, [fromFintopId, txnTime], (bgErr, bgRows) => {
               if (bgErr) {
-                console.error("Error fetching badges:", bgErr);
+                console.error("Badge lookup failed");
                 return res.status(500).json({ message: "Could not fetch badges" });
               }
               res.json({
@@ -435,7 +436,7 @@ router.post('/request', (req, res) => {
 
   getLastLoginUser((err, lastUser) => {
     if (err) {
-      console.error('Error fetching last login user:', err);
+      console.error('Last login lookup failed');
       return res.status(500).json({ message: 'Error fetching user details' });
     }
 
@@ -452,7 +453,7 @@ router.post('/request', (req, res) => {
 
     db.query(checkQuery, [fromFintopId, toFintopId], (err, results) => {
       if (err) {
-        console.error('Error checking existing payment request:', err);
+        console.error('Payment request lookup failed');
         return res.status(500).json({ message: 'Failed to process payment request' });
       }
 
@@ -465,7 +466,7 @@ router.post('/request', (req, res) => {
 
         db.query(updateQuery, [amount, results[0].request_id], (err) => {
           if (err) {
-            console.error('Error updating payment request:', err);
+            console.error('Payment request update failed');
             return res.status(500).json({ message: 'Failed to update payment request' });
           }
 
@@ -479,7 +480,7 @@ router.post('/request', (req, res) => {
 
         db.query(insertQuery, [fromFintopId, toFintopId, amount], (err) => {
           if (err) {
-            console.error('Error creating payment request:', err);
+            console.error('Payment request insert failed');
             return res.status(500).json({ message: 'Payment request failed' });
           }
 
@@ -493,7 +494,7 @@ router.post('/request', (req, res) => {
 router.get('/reward', (req, res) => {
   getLastLoginUser((err, lastUser) => {
     if (err) {
-      console.error('Error fetching last login user:', err);
+      console.error('Last login lookup failed');
       return res.status(500).json({ message: 'Error fetching user details' });
     }
 
@@ -516,7 +517,7 @@ router.get('/reward', (req, res) => {
       `;
       db.query(badgesQ, [user_id], (badgeErr, badgeResults) => {
         if (badgeErr) {
-          console.error('Error fetching badge details:', badgeErr);
+          console.error('Badge lookup failed');
           return res.status(500).json({ message: 'Error fetching badge details' });
         }
 
@@ -527,7 +528,7 @@ router.get('/reward', (req, res) => {
         `;
         db.query(spendQ, [fintop_id], (spendErr, spendResults) => {
           if (spendErr) {
-            console.error('Error fetching total spend:', spendErr);
+            console.error('Total spend lookup failed');
             return res.status(500).json({ message: 'Error fetching total spend' });
           }
 
@@ -540,7 +541,7 @@ router.get('/reward', (req, res) => {
     if (doClaim) {
       db.query('CALL claim_next_badge(?, @new_badge_id)', [user_id], (procErr) => {
         if (procErr) {
-          console.error('Error claiming next badge:', procErr);
+          console.error('Badge claim failed');
           return res.status(500).json({ message: 'Error claiming badge' });
         }
         afterClaim();
@@ -565,16 +566,16 @@ router.post('/transactions-history', (req, res) => {
           t.from_id AS SenderID,
           t.to_id AS RecipientID
       FROM log l
-      JOIN fintop f 
+      JOIN fintop f
         ON f.user_id = l.user_id
-      JOIN transactions t 
+      JOIN transactions t
         ON t.from_id = f.fintop_id OR t.to_id = f.fintop_id
-      LEFT JOIN fintop f_related 
+      LEFT JOIN fintop f_related
         ON f_related.fintop_id = CASE
           WHEN t.from_id = f.fintop_id THEN t.to_id
           WHEN t.to_id = f.fintop_id THEN t.from_id
         END
-      LEFT JOIN users u 
+      LEFT JOIN users u
         ON u.user_id = f_related.user_id
       WHERE l.login_type = 'user'
         AND l.time_stamp = (
@@ -586,7 +587,7 @@ router.post('/transactions-history', (req, res) => {
     `;
     db.query(query, (err, results) => {
       if (err) {
-        console.error('Error fetching transactions:', err);
+        console.error('Transactions lookup failed');
         return res.status(500).json({ message: 'Error fetching transactions' });
       }
       return res.json(results);
@@ -622,7 +623,7 @@ router.post('/transactions-history', (req, res) => {
     `;
     db.query(detailQuery, [transaction_id], (err, results) => {
       if (err) {
-        console.error('Error fetching transaction details:', err);
+        console.error('Transaction details lookup failed');
         return res.status(500).json({ message: 'Server error' });
       }
       if (!results || results.length === 0) {
@@ -634,5 +635,3 @@ router.post('/transactions-history', (req, res) => {
 });
 
 module.exports = router;
-
-
