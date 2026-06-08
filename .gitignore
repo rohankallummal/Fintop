@@ -14,13 +14,18 @@ logs/
 # Environment files
 .env
 .env.local
+.env.*.local
+.env.development
+.env.production
+*.pem
 
 # System files
 .DS_Store
 Thumbs.db
 
-# VSCode config
+# Editor config
 .vscode/
+.idea/
 
 # Temporary files
 *.tmp

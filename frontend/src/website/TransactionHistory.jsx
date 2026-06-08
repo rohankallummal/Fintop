@@ -24,7 +24,7 @@ const TransactionHistory = () => {
     })
       .then((res) => res.json())
       .then((data) => setTransactions(data))
-      .catch((err) => console.error('Error fetching transactions:', err));
+      .catch((err) => console.error('Error fetching transactions:'));
   }, []);
 
   const handleCardClick = async (tx) => {
@@ -39,7 +39,7 @@ const TransactionHistory = () => {
       setPopupData(fullData);
       setShowPopup(true);
     } catch (error) {
-      console.error('Error fetching transaction details:', error);
+      console.error('Error fetching transaction details:');
     }
   };
 

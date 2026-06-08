@@ -40,7 +40,7 @@ const Contacts = () => {
           console.error('Failed to fetch contact information');
         }
       } catch (error) {
-        console.error('Error fetching contact information:', error);
+        console.error('Error fetching contact information:');
       }
     };
 
@@ -52,14 +52,14 @@ const Contacts = () => {
       .then((response) => response.json())
       .then((data) => setAnimationData1(data))
       .catch((error) =>
-        console.error('Error loading first animation:', error)
+        console.error('Error loading first animation:')
       );
 
     fetch('/assets/animation4.json')
       .then((response) => response.json())
       .then((data) => setAnimationData2(data))
       .catch((error) =>
-        console.error('Error loading second animation:', error)
+        console.error('Error loading second animation:')
       );
   }, []);
 
